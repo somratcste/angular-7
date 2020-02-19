@@ -1,0 +1,23 @@
+<div class="todos">
+
+  <div>
+    <form (submit)="add($event)">
+      <input [(ngModel)]="name" (keyup.enter)="name=''" class="textfield" name="name" />
+      <button  type="submit" [disabled]="name===''">Add</button>
+    </form>
+  </div>
+
+  <div>
+    ( {{ getRemainingCount() }} ) reamining out of ( {{ getTotalCount() }}) tasks
+  </div>
+
+  <ul>
+    <li *ngFor="let item of items; let i=index">
+      <span (click)="toggleItem(item)" [ngClass]="{'is-done': item.isDone}">{{ item.name }}</span>
+    </li>
+  </ul>
+
+  <div class="mtop20">
+    <button (click)="deleteSelectedTodos()">Delete Selected</button>
+  </div>
+</div>
